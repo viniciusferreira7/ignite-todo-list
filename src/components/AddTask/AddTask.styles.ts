@@ -20,11 +20,14 @@ export const ButtonContainer = styled.button`
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+
     background: ${theme.blue_dark};
     font-size: 0.875rem;
     color: ${theme.gray_100};
+
     border-radius: 8px;
     border-color: transparent;
+    cursor: pointer;
 
     &:hover {
       outline: 0;
