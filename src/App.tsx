@@ -2,7 +2,7 @@ import { ThemeProvider } from 'styled-components'
 import { AddTask } from './components/AddTask'
 
 import { Header } from './components/Header'
-import { ListEmpty } from './components/ListEmpty'
+import { ListTask } from './components/ListTask'
 import { TitleTask } from './components/TitleTask'
 
 import { GlobalStyle } from './styles/global'
@@ -14,8 +14,8 @@ export function App() {
       <Header />
       <AddTask />
       <TitleTask />
-      {/* <ListTask /> */}
-      <ListEmpty />
+      <ListTask />
+      {/* <ListEmpty /> */}
       <GlobalStyle />
     </ThemeProvider>
   )

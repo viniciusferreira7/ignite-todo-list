@@ -7,7 +7,7 @@ export const ListTaskContainer = styled.main`
   overflow: auto;
   justify-content: center;
 
-  width: 46rem;
+  max-width: 46rem;
   margin: 0 auto;
   margin-top: calc(3.69rem / 2);
 

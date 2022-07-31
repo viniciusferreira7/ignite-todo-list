@@ -5,7 +5,7 @@ export const TitleTaskContainer = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  width: 46rem;
+  max-width: 46rem;
   margin: 0 auto;
   margin-top: calc(3.69rem / 2);
 

@@ -4,8 +4,9 @@ export const AddTaskContainer = styled.div`
   ${({ theme }) => css`
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
 
-    width: 46rem;
+    max-width: 46rem;
 
     margin: 0 auto;
     margin-top: calc(-3.25rem / 2);
@@ -53,5 +54,8 @@ export const InputContainer = styled.input`
       color: ${theme.gray_100};
       outline: none;
     }
+
+    @media (max-width: 768px) {
+      min-width:auto;
   `}
 `

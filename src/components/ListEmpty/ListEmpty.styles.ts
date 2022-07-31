@@ -5,7 +5,7 @@ export const ListEmptyContainer = styled.main`
   flex-direction: column;
   align-items: center;
 
-  width: 46rem;
+  max-width: 46rem;
   margin: 0 auto;
   margin-top: calc(3.69rem / 2);
   padding: 4rem 1.5rem;
