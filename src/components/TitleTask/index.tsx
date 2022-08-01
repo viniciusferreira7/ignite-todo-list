@@ -1,10 +1,14 @@
 import { TitleTaskContainer } from './TitleTask.styles'
 
-export function TitleTask() {
+interface titleTaskProps {
+  amountTasks: number
+}
+
+export function TitleTask({ amountTasks }: titleTaskProps) {
   return (
     <TitleTaskContainer>
       <h5>
-        Tarefas criadas <span>5</span>
+        Tarefas criadas <span>{amountTasks}</span>
       </h5>
       <h5>
         Concluídas <span>2 de 5</span>

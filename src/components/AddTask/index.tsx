@@ -1,4 +1,5 @@
 import { PlusCircle } from 'phosphor-react'
+import { ChangeEvent } from 'react'
 
 import {
   AddTaskContainer,
@@ -6,11 +7,28 @@ import {
   InputContainer,
 } from './AddTask.styles'
 
-export function AddTask() {
+interface taskProps {
+  handleCreateTask: (event: ChangeEvent<HTMLInputElement>) => void
+  handleAddTask: () => void
+  newTaskEmpty: boolean
+  task: string
+}
+
+export function AddTask({
+  handleCreateTask,
+  handleAddTask,
+  newTaskEmpty,
+  task,
+}: taskProps) {
   return (
     <AddTaskContainer>
-      <InputContainer type="text" placeholder="Adicione uma nova tarefa" />
-      <ButtonContainer>
+      <InputContainer
+        onChange={handleCreateTask}
+        type="text"
+        placeholder="Adicione uma nova tarefa"
+        value={task}
+      />
+      <ButtonContainer onClick={handleAddTask} disabled={newTaskEmpty}>
         Criar <PlusCircle size={16} />
       </ButtonContainer>
     </AddTaskContainer>

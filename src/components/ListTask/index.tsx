@@ -1,18 +1,21 @@
 import { Circle, Trash } from 'phosphor-react'
 import { ListItemContainer, ListTaskContainer } from './ListTask.styles'
 
-export function ListTask() {
+interface allTasksProps {
+  allTasks: []
+}
+
+export function ListTask({ allTasks }: allTasksProps) {
   return (
     <ListTaskContainer>
       <ol>
-        <ListItemContainer>
-          <Circle size={24} />
-          <p>
-            Integer urna interdum massa ListItemContainerbero auctor neque
-            turpis turpis semper. Duis vel sed fames integer.
-          </p>
-          <Trash size={24} />
-        </ListItemContainer>
+        {allTasks.map((item) => (
+          <ListItemContainer key={item}>
+            <Circle size={24} />
+            <p>{item}</p>
+            <Trash size={24} />
+          </ListItemContainer>
+        ))}
       </ol>
     </ListTaskContainer>
   )

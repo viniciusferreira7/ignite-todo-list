@@ -14,6 +14,10 @@ export const ListTaskContainer = styled.main`
   ol {
     padding: 1.5rem 0;
   }
+
+  li + li {
+    margin-top: 0.75rem;
+  }
 `
 
 export const ListItemContainer = styled.li`

@@ -34,6 +34,11 @@ export const ButtonContainer = styled.button`
       outline: 0;
       background: ${theme.blue};
     }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
   `}
 `
 
@@ -56,6 +61,7 @@ export const InputContainer = styled.input`
     }
 
     @media (max-width: 768px) {
-      min-width:auto;
+      min-width: auto;
+    }
   `}
 `
