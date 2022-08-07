@@ -2,7 +2,7 @@ import { Circle, Trash } from 'phosphor-react'
 import { ListItemContainer, ListTaskContainer } from './ListTask.styles'
 
 interface allTasksProps {
-  allTasks: []
+  allTasks: string[]
 }
 
 export function ListTask({ allTasks }: allTasksProps) {

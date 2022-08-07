@@ -12,7 +12,7 @@ import { defaultTheme } from './styles/theme/default'
 
 export function App() {
   const [task, setTask] = useState('')
-  const [allTasks, setAllTasks] = useState(['dsfg'])
+  const [allTasks, setAllTasks] = useState<string[]>([])
 
   function handleCreateTask(event: ChangeEvent<HTMLInputElement>) {
     setTask(event.target.value)
@@ -26,8 +26,6 @@ export function App() {
   const verifyTaskEmpty = allTasks.length !== 0
   const newTaskEmpty = task === ''
 
-  console.log(verifyTaskEmpty)
-
   return (
     <ThemeProvider theme={defaultTheme}>
       <Header />
@@ -39,6 +37,7 @@ export function App() {
       />
       <TitleTask amountTasks={allTasks.length} />
       {verifyTaskEmpty ? <ListTask allTasks={allTasks} /> : <ListEmpty />}
+      {/* allTasks is empty */}
       <GlobalStyle />
     </ThemeProvider>
   )
