@@ -26,6 +26,7 @@ export function App() {
     setTask('')
   }
 
+  // Problem in return value
   function handleDeleteTask(deleteTask: string): handleDeleteTask {
     setAllTasks((allTasks) => allTasks.filter((task) => task === deleteTask))
   }
