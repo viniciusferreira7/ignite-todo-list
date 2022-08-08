@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, MouseEventHandler, useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { AddTask } from './components/AddTask'
 
@@ -10,9 +10,12 @@ import { TitleTask } from './components/TitleTask'
 import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/theme/default'
 
+type handleDeleteTask = () => MouseEventHandler<SVGSVGElement>
+
 export function App() {
   const [task, setTask] = useState('')
   const [allTasks, setAllTasks] = useState<string[]>([])
+  const [amountChecked, setAmountChecked] = useState(0)
 
   function handleCreateTask(event: ChangeEvent<HTMLInputElement>) {
     setTask(event.target.value)
@@ -23,8 +26,31 @@ export function App() {
     setTask('')
   }
 
+  function handleDeleteTask(deleteTask: string): handleDeleteTask {
+    setAllTasks((allTasks) => allTasks.filter((task) => task === deleteTask))
+  }
+
+  function handleCompleteTask(checked: boolean) {
+    checked
+      ? setAmountChecked((amountChecked) => amountChecked - 1)
+      : setAmountChecked((amountChecked) => amountChecked + 1)
+  }
+
   const verifyTaskEmpty = allTasks.length !== 0
   const newTaskEmpty = task === ''
+  const isListTaskEmptyOrNot = (
+    <>
+      {verifyTaskEmpty ? (
+        <ListTask
+          handleDeleteTask={handleDeleteTask}
+          handleCompleteTask={handleCompleteTask}
+          allTasks={allTasks}
+        />
+      ) : (
+        <ListEmpty />
+      )}
+    </>
+  )
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -35,9 +61,8 @@ export function App() {
         newTaskEmpty={newTaskEmpty}
         task={task}
       />
-      <TitleTask amountTasks={allTasks.length} />
-      {verifyTaskEmpty ? <ListTask allTasks={allTasks} /> : <ListEmpty />}
-      {/* allTasks is empty */}
+      <TitleTask amountTasks={allTasks.length} amountChecked={amountChecked} />
+      {isListTaskEmptyOrNot}
       <GlobalStyle />
     </ThemeProvider>
   )

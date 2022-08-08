@@ -1,20 +1,29 @@
-import { Circle, Trash } from 'phosphor-react'
-import { ListItemContainer, ListTaskContainer } from './ListTask.styles'
+import { MouseEventHandler } from 'react'
+import { Task } from '../Task'
+import { ListTaskContainer } from './ListTask.styles'
 
 interface allTasksProps {
   allTasks: string[]
+  handleCompleteTask: (checked: boolean) => void
+  handleDeleteTask: (deleteTask: string) => MouseEventHandler<SVGSVGElement>
 }
 
-export function ListTask({ allTasks }: allTasksProps) {
+export function ListTask({
+  allTasks,
+  handleCompleteTask,
+  handleDeleteTask,
+}: allTasksProps) {
   return (
     <ListTaskContainer>
       <ol>
         {allTasks.map((item) => (
-          <ListItemContainer key={item}>
-            <Circle size={24} />
-            <p>{item}</p>
-            <Trash size={24} />
-          </ListItemContainer>
+          <Task
+            handleDeleteTask={handleDeleteTask}
+            handleCompleteTask={handleCompleteTask}
+            key={item}
+          >
+            {item}
+          </Task>
         ))}
       </ol>
     </ListTaskContainer>
