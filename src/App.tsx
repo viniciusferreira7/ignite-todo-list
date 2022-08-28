@@ -1,4 +1,4 @@
-import { ChangeEvent, MouseEventHandler, useState } from 'react'
+import { ChangeEvent, useState } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { AddTask } from './components/AddTask'
 
@@ -9,8 +9,6 @@ import { TitleTask } from './components/TitleTask'
 
 import { GlobalStyle } from './styles/global'
 import { defaultTheme } from './styles/theme/default'
-
-type handleDeleteTask = () => MouseEventHandler<SVGSVGElement>
 
 export function App() {
   const [task, setTask] = useState('')
@@ -26,24 +24,20 @@ export function App() {
     setTask('')
   }
 
-  // Problem in return value
-  function handleDeleteTask(deleteTask: string): handleDeleteTask {
-    setAllTasks((allTasks) => allTasks.filter((task) => task === deleteTask))
-  }
-
   function handleCompleteTask(checked: boolean) {
     checked
       ? setAmountChecked((amountChecked) => amountChecked - 1)
       : setAmountChecked((amountChecked) => amountChecked + 1)
   }
 
-  const verifyTaskEmpty = allTasks.length !== 0
+  const verifyTaskNotEmpty = allTasks.length !== 0
   const newTaskEmpty = task === ''
   const isListTaskEmptyOrNot = (
     <>
-      {verifyTaskEmpty ? (
+      {verifyTaskNotEmpty ? (
         <ListTask
-          handleDeleteTask={handleDeleteTask}
+          // handleDeleteTask={handleDeleteTask}
+          setAllTasks={setAllTasks}
           handleCompleteTask={handleCompleteTask}
           allTasks={allTasks}
         />

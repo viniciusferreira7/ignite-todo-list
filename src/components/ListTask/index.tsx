@@ -1,24 +1,24 @@
-import { MouseEventHandler } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { Task } from '../Task'
 import { ListTaskContainer } from './ListTask.styles'
 
 interface allTasksProps {
   allTasks: string[]
   handleCompleteTask: (checked: boolean) => void
-  handleDeleteTask: (deleteTask: string) => MouseEventHandler<SVGSVGElement>
+  setAllTasks: Dispatch<SetStateAction<string[]>>
 }
 
 export function ListTask({
   allTasks,
   handleCompleteTask,
-  handleDeleteTask,
+  setAllTasks,
 }: allTasksProps) {
   return (
     <ListTaskContainer>
       <ol>
         {allTasks.map((item) => (
           <Task
-            handleDeleteTask={handleDeleteTask}
+            setAllTasks={setAllTasks}
             handleCompleteTask={handleCompleteTask}
             key={item}
           >

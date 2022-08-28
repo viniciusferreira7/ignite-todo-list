@@ -1,23 +1,27 @@
 import { CheckCircle, Circle, Trash } from 'phosphor-react'
-import { MouseEventHandler, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { TaskContainer } from './styles'
 
 interface TaskProps {
   children: string
   handleCompleteTask: (checked: boolean) => void
-  handleDeleteTask: (deleteTask: string) => MouseEventHandler<SVGSVGElement>
+  setAllTasks: Dispatch<SetStateAction<string[]>>
 }
 
-export function Task({
-  children,
-  handleCompleteTask,
-  handleDeleteTask,
-}: TaskProps) {
+export function Task({ children, handleCompleteTask, setAllTasks }: TaskProps) {
   const [checked, setChecked] = useState(false)
 
   function handleChecked() {
     setChecked((checked) => !checked)
     handleCompleteTask(checked)
+  }
+
+  function handleDeleteTask(): undefined {
+    setAllTasks((allTasks) => allTasks.filter((task) => task !== children))
+    if (checked) {
+      handleCompleteTask(checked)
+    }
+    return undefined
   }
 
   const isCheckedOrNot = (
@@ -33,8 +37,10 @@ export function Task({
   return (
     <TaskContainer checked={checked}>
       {isCheckedOrNot}
-      <p>{children}</p>
-      <Trash onClick={handleDeleteTask(children)} size={24} />
+      <div>
+        <p>{children}</p>
+      </div>
+      <Trash onClick={handleDeleteTask} size={24} />
     </TaskContainer>
   )
 }

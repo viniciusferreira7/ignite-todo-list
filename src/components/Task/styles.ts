@@ -7,14 +7,20 @@ interface TaskContainerProps {
 export const TaskContainer = styled.li<TaskContainerProps>`
   display: flex;
   gap: 0.75rem;
+  justify-content: space-between;
 
   padding: 1.5rem;
   border-radius: 8px;
 
   background: ${(props) => props.theme.gray_500};
 
+  div {
+    overflow: auto;
+  }
+
   p {
     flex: 1;
+
     text-decoration: ${(props) => (props.checked ? 'line-through' : 'none')};
     font-size: 0.87rem;
     line-height: 1.19rem;
