@@ -10,6 +10,10 @@ export const AddTaskContainer = styled.div`
 
     margin: 0 auto;
     margin-top: calc(-3.25rem / 2);
+
+    @media screen and (max-width: 768px) {
+      padding: 0 1%;
+    }
   `}
 `
 

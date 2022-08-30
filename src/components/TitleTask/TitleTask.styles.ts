@@ -13,6 +13,9 @@ export const TitleTaskContainer = styled.header`
 
   padding-top: calc(3.69rem / 2);
 
+  @media screen and (max-width: 768px) {
+    padding: 0 1%;
+  }
   h5:last-child {
     color: ${(props) => props.theme.purple};
   }
